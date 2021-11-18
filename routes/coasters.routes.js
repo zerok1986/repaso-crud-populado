@@ -4,11 +4,10 @@ const Park = require('./../models/Park.model')
 const Coaster = require('./../models/Coaster.model')
 
 // Endpoints
-router.get('/new', (req, res, next) => {
-  Coaster.find()
-    .populate('park_id')
-    .then((allParks) => res.render('pages/coasters/new-coaster', { allParks }))
-    .catch((err) => console.error(err))
+router.get('/new', (req, res) => {
+    Park.find()
+        .then(allParks => res.render('pages/coasters/new-coaster', {allParks}))
+        .catch(err => console.log(err))
 })
 
 router.post('/new', (req, res, next) => {
